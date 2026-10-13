@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 30 33% 97%;
+    --foreground: 300 10% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 300 10% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 300 10% 11%;
+    --primary: 318 38% 30%;
+    --primary-foreground: 30 33% 97%;
+    --secondary: 330 30% 93%;
+    --secondary-foreground: 318 38% 25%;
+    --muted: 30 20% 93%;
+    --muted-foreground: 300 6% 40%;
+    --accent: 340 45% 72%;
+    --accent-foreground: 300 10% 11%;
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 320 15% 87%;
+    --input: 320 15% 87%;
+    --ring: 318 38% 30%;
+    --radius: 1rem;
+    --ink: 300 12% 9%;
+    --ink-foreground: 30 33% 95%;
+    --gradient-brand: linear-gradient(135deg, hsl(318 38% 30%), hsl(340 45% 62%) 60%, hsl(270 30% 72%));
+    --shadow-soft: 0 20px 50px -20px hsl(318 38% 30% / 0.3);
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    touch-action: pan-y;
+  }
+  h1, h2, h3 { @apply font-display; letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .bg-brand { background: var(--gradient-brand); }
+  .text-brand { background: var(--gradient-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .shadow-soft { box-shadow: var(--shadow-soft); }
+  .bg-ink { background-color: hsl(var(--ink)); }
+  .text-ink-foreground { color: hsl(var(--ink-foreground)); }
+  .animate-float { animation: float 7s ease-in-out infinite; }
+  .animate-rise { animation: rise 0.9s cubic-bezier(.2,.7,.2,1) both; }
+  .animate-marquee { animation: marquee 30s linear infinite; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@keyframes float { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-14px) } }
+@keyframes rise { from { opacity: 0; transform: translateY(30px) } to { opacity: 1; transform: none } }
+@keyframes marquee { to { transform: translateX(-50%) } }
